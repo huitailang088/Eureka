@@ -26,14 +26,16 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order getOrderById(String id) {
         Order order = new Order(1,"order", new Product(11, "order", 11));
-        List<ServiceInstance> list = discoveryClient.getInstances("service-provider");
 
+        // 基于负载均衡的接口发现调用
+        String url = "http://service-provider/product/list";
+
+        // 基于DiscoveryClient服务发现接口调用
+        /*List<ServiceInstance> list = discoveryClient.getInstances("service-provider");
         ServiceInstance serviceInstance = list.get(0);
-
         String host  = serviceInstance.getHost();
         int port = serviceInstance.getPort();
-
-        String url = "http://" + host + ":" + port + "/product/list";
+        String url = "http://" + host + ":" + port + "/product/list";*/
 
         ResponseEntity<List<Product>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){});
 
