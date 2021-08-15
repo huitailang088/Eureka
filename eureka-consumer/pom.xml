@@ -13,6 +13,12 @@
 
     <name>eureka-consumer</name>
     <dependencies>
+
+        <dependency>
+            <groupId>huitailiang</groupId>
+            <artifactId></artifactId>
+        </dependency>
+
         <!--添加server依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
